@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class World : MonoBehaviour
+public class Seed : MonoBehaviour
 {
-    static public float day = 0f;
-    static public int seeds = 0;
-
-    public float dayLength = 30f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +13,12 @@ public class World : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        day += Time.deltaTime / dayLength;
+        
+    }
+
+    void OnMouseDown()
+    {
+        World.seeds += Random.Range(2, 3);
+        Destroy(gameObject);
     }
 }

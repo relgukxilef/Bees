@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class World : MonoBehaviour
+public class HUD : MonoBehaviour
 {
-    static public float day = 0f;
-    static public int seeds = 0;
-
-    public float dayLength = 30f;
+    public TMP_Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +16,8 @@ public class World : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        day += Time.deltaTime / dayLength;
+        text.text = 
+            "Day " + (int)(World.day + 1) + "\n" +
+            "Seeds " + World.seeds;
     }
 }

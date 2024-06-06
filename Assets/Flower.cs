@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     public static List<Flower> flowers = new List<Flower>();
+    public Seed seed;
 
     public int startDay;
     public int lifeExpectancy;
@@ -21,6 +22,7 @@ public class Flower : MonoBehaviour
     {
         if (World.day > startDay + lifeExpectancy) {
             flowers.Remove(this);
+            Instantiate(seed, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
