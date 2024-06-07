@@ -24,6 +24,7 @@ public class Seed : MonoBehaviour, Beeable
     public void Interact()
     {
         World.seeds += Random.Range(2, 3);
+        Bee.target = null;
         Destroy(gameObject);
     }
 

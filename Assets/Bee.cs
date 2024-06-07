@@ -22,7 +22,6 @@ public class Bee : MonoBehaviour
                 0.1f
             ) {
                 target.Interact();
-                target = null;
             } else {
                 transform.position = Vector3.MoveTowards(
                     transform.position, target.GetPosition(), 

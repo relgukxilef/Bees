@@ -6,8 +6,11 @@ public class World : MonoBehaviour
 {
     static public float day = 0f;
     static public int seeds = 0;
+    static public float honey = 0;
+    static public float life = 100f;
 
     public float dayLength = 30f;
+    public float lifeDrain = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +22,6 @@ public class World : MonoBehaviour
     void Update()
     {
         day += Time.deltaTime / dayLength;
+        life -= lifeDrain * Time.deltaTime;
     }
 }

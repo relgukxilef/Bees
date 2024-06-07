@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20702c52347079b46bdb10ee5bf28c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
 --- !u!1 &1016034270
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayLength: 30
+  lifeDrain: 1
 --- !u!4 &1075429616
 Transform:
   m_ObjectHideFlags: 0
@@ -806,7 +807,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1050,6 +1051,22 @@ PrefabInstance:
     - target: {fileID: 1972770355554211662, guid: 0d518212e2df90e4caa88ba92ce329bc, type: 3}
       propertyPath: m_Name
       value: Flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460338631889160828, guid: 0d518212e2df90e4caa88ba92ce329bc, type: 3}
+      propertyPath: lifeGain
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460338631889160828, guid: 0d518212e2df90e4caa88ba92ce329bc, type: 3}
+      propertyPath: honeyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460338631889160828, guid: 0d518212e2df90e4caa88ba92ce329bc, type: 3}
+      propertyPath: lifeSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460338631889160828, guid: 0d518212e2df90e4caa88ba92ce329bc, type: 3}
+      propertyPath: honeySpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

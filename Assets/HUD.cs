@@ -18,6 +18,8 @@ public class HUD : MonoBehaviour
     {
         text.text = 
             "Day " + (int)(World.day + 1) + "\n" +
-            "Seeds " + World.seeds;
+            "Seeds " + World.seeds + "\n" +
+            "Honey " + (int)World.honey + "\n" +
+            "Health " + (int)World.life;
     }
 }

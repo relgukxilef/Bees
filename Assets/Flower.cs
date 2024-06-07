@@ -9,6 +9,10 @@ public class Flower : MonoBehaviour, Beeable
 
     public int startDay;
     public int lifeExpectancy;
+    public float honeyGain;
+    public float honeySpeed;
+    public float lifeGain;
+    public float lifeSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +40,12 @@ public class Flower : MonoBehaviour, Beeable
 
     public void Interact()
     {
-
+        float delta = Mathf.Min(honeyGain, Time.deltaTime * honeySpeed);
+        World.honey += delta;
+        honeyGain -= delta;
+        delta = Mathf.Min(lifeGain, Time.deltaTime * lifeSpeed);
+        World.life += delta;
+        lifeGain -= delta;
     }
 
     public Vector3 GetPosition()
