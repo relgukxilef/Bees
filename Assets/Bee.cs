@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class Bee : MonoBehaviour
 {
-    Vector3 target;
+    static public Beeable target;
     public float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = Flower.flowers[
-            Random.Range(0,Flower.flowers.Count)
-        ].transform.position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target, transform.position) < 0.1f){
-            if (Flower.flowers.Count > 0) {
-                target = Flower.flowers[
-                    Random.Range(0,Flower.flowers.Count)
-                ].transform.position;
+        if (target != null) {
+            if (
+                Vector3.Distance(target.GetPosition(), transform.position) < 
+                0.1f
+            ) {
+                target.Interact();
+                target = null;
+            } else {
+                transform.position = Vector3.MoveTowards(
+                    transform.position, target.GetPosition(), 
+                    speed * Time.deltaTime
+                );
             }
         }
-        transform.position = Vector3.MoveTowards(
-            transform.position, target, Time.deltaTime * speed
-        );
     }
 }
