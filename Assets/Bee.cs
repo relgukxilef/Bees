@@ -6,6 +6,7 @@ public class Bee : MonoBehaviour
 {
     static public Beeable target;
     public float speed = 2f;
+    public float bobSpeed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,14 @@ public class Bee : MonoBehaviour
                 transform.position = Vector3.MoveTowards(
                     transform.position, target.GetPosition(), 
                     speed * Time.deltaTime
+                ) + new Vector3(
+                    0f, 
+                    Mathf.Sin(Time.time * Mathf.PI * bobSpeed) * Time.deltaTime, 
+                    0f
                 );
+                
+                GetComponent<SpriteRenderer>().flipX = 
+                    target.GetPosition().x > transform.position.x;
             }
         }
     }

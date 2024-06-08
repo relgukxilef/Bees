@@ -14,5 +14,11 @@
 !*.png
 !*.asset
 !*.json
+!*.prefab
+!*.anim
+!*.controller
+
+!*.png
+!*.psd
 
 Library
