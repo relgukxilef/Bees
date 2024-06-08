@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seed : MonoBehaviour, Beeable
+public class Seed : Beeable
 {
     // Start is called before the first frame update
     void Start()
@@ -16,19 +16,13 @@ public class Seed : MonoBehaviour, Beeable
         
     }
 
-    public void OnMouseDown()
-    {
-        Bee.target = this;
-    }
-
-    public void Interact()
+    public override void Interact()
     {
         World.seeds += Random.Range(2, 3);
-        Bee.target = null;
         Destroy(gameObject);
     }
 
-    public Vector3 GetPosition()
+    public override Vector3 GetPosition()
     {
         return transform.position;
     }

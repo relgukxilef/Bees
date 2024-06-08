@@ -1,7 +1,22 @@
 using UnityEngine;
 
-public interface Beeable
+public abstract class Beeable : MonoBehaviour
 {
-    Vector3 GetPosition();
-    void Interact();
+    public abstract Vector3 GetPosition();
+    public abstract void Interact();
+    
+    public void OnMouseDown()
+    {
+        if (Bee.selected != null) {
+            Bee.target = this;
+            Bee.selected = null;
+        }
+    }
+
+    public void Destroy()
+    {
+        if (Bee.target == this) {
+            Bee.target = null;
+        }
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flower : MonoBehaviour, Beeable
+public class Flower : Beeable
 {
     public static List<Flower> flowers = new List<Flower>();
     public Seed seed;
@@ -27,18 +27,11 @@ public class Flower : MonoBehaviour, Beeable
         if (World.day > startDay + lifeExpectancy) {
             flowers.Remove(this);
             Instantiate(seed, transform.position, Quaternion.identity);
-            if (Bee.target == this)
-                Bee.target = null;
             Destroy(gameObject);
         }
     }
 
-    public void OnMouseDown()
-    {
-        Bee.target = this;
-    }
-
-    public void Interact()
+    public override void Interact()
     {
         float delta = Mathf.Min(honeyGain, Time.deltaTime * honeySpeed);
         World.honey += delta;
@@ -48,7 +41,7 @@ public class Flower : MonoBehaviour, Beeable
         lifeGain -= delta;
     }
 
-    public Vector3 GetPosition()
+    public override Vector3 GetPosition()
     {
         return transform.position;
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bee : MonoBehaviour
 {
     static public Beeable target;
+    static public Bee selected;
     public float speed = 2f;
     public float bobSpeed = 2f;
 
@@ -36,6 +37,15 @@ public class Bee : MonoBehaviour
                 GetComponent<SpriteRenderer>().flipX = 
                     target.GetPosition().x > transform.position.x;
             }
+        }
+    }
+
+    void OnMouseDown()
+    {
+        if (!selected) {
+            selected = this;
+        } else {
+            // TODO: open inventory
         }
     }
 }
