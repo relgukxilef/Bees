@@ -6,8 +6,10 @@ public class Bee : MonoBehaviour
 {
     static public Beeable target;
     static public Bee selected;
+    
     public float speed = 2f;
     public float bobSpeed = 2f;
+    public List<Item> inventory = new List<Item>();
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,6 @@ public class Bee : MonoBehaviour
         if (!selected) {
             selected = this;
         } else {
-            // TODO: open inventory
         }
     }
 }

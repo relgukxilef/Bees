@@ -98,13 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ffcdd29a52fa44f8ae3f7f1adf7b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: {fileID: 2304278059299713257, guid: 7174242717171ef46aa4dde9d0062929, type: 3}
-  startDay: 0
-  lifeExpectancy: 1
-  honeyGain: 0
-  honeySpeed: 0
-  lifeGain: 0
-  lifeSpeed: 0
+  phases:
+  - {fileID: 21300000, guid: 532cae2253020464dae84d2b44bd1bd1, type: 3}
+  - {fileID: 21300000, guid: 4cfd119fe7c22b649a4e9c4429312255, type: 3}
+  - {fileID: 21300000, guid: 0e9ee961674987b409614d69fdfb2084, type: 3}
+  - {fileID: 21300000, guid: 5a6e96692032d0746a7e3b8e46e880de, type: 3}
+  - {fileID: 21300000, guid: 6fa94c3dbaff9a149aa2961cc9fc7034, type: 3}
+  item: {fileID: 3259914180187999596, guid: 46ddc716a33e9914fb9acd034b89874a, type: 3}
+  growth: 0
+  growthSpeed: 0.1
+  phase: 0
 --- !u!61 &4210776309745286817
 BoxCollider2D:
   m_ObjectHideFlags: 0

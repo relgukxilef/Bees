@@ -5,40 +5,46 @@ using UnityEngine;
 public class Flower : Beeable
 {
     public static List<Flower> flowers = new List<Flower>();
-    public Seed seed;
 
-    public int startDay;
-    public int lifeExpectancy;
-    public float honeyGain;
-    public float honeySpeed;
-    public float lifeGain;
-    public float lifeSpeed;
+    public Sprite[] phases;
+    public Item item;
+
+    public float growth;
+    public float growthSpeed;
+    public int phase;
+
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         flowers.Add(this);
-        startDay = (int)World.day;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (World.day > startDay + lifeExpectancy) {
+        if (growth < 2) {
+            growth += growthSpeed * Time.deltaTime;
+        }
+        if (growth < 5) {
+            phase = (int)growth;
+            spriteRenderer.sprite = phases[phase];
+        } else {
             flowers.Remove(this);
-            Instantiate(seed, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
 
     public override void Interact()
     {
-        float delta = Mathf.Min(honeyGain, Time.deltaTime * honeySpeed);
-        World.honey += delta;
-        honeyGain -= delta;
-        delta = Mathf.Min(lifeGain, Time.deltaTime * lifeSpeed);
-        World.life += delta;
-        lifeGain -= delta;
+        if (phase == 2) {
+            Instantiate(
+                item, transform.position, Quaternion.identity
+            );
+            growth = 1;
+        }
     }
 
     public override Vector3 GetPosition()
