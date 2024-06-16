@@ -37,12 +37,13 @@ public class Flower : Beeable
         }
     }
 
-    public override void Interact()
+    public override void Interact(Bee bee)
     {
-        if (phase == 2) {
-            Instantiate(
-                item, transform.position, Quaternion.identity
-            );
+        InventorySlot slot = bee.inventory.GetEmptySlot();
+        if (phase == 2 && slot) {
+            Item newItem = Instantiate(item, slot.transform);
+            newItem.transform.parent = slot.transform;
+            slot.item = newItem;
             growth = 1;
         }
     }

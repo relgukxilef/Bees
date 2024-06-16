@@ -9,7 +9,7 @@ public class Bee : MonoBehaviour
     
     public float speed = 2f;
     public float bobSpeed = 2f;
-    public List<Item> inventory = new List<Item>();
+    public Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class Bee : MonoBehaviour
                 Vector3.Distance(target.GetPosition(), transform.position) < 
                 0.1f
             ) {
-                target.Interact();
+                target.Interact(this);
             } else {
                 transform.position = Vector3.MoveTowards(
                     transform.position, target.GetPosition(), 

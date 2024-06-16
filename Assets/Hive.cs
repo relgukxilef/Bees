@@ -18,7 +18,7 @@ public class Hive : Beeable
         
     }
 
-    public override void Interact()
+    public override void Interact(Bee bee)
     {
         ;
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class Beeable : MonoBehaviour
 {
     public abstract Vector3 GetPosition();
-    public abstract void Interact();
+    public abstract void Interact(Bee bee);
     
     public void OnMouseDown()
     {
