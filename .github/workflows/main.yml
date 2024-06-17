@@ -2,6 +2,15 @@ name: Build project
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+  
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
@@ -10,13 +19,16 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          #- StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          #- StandaloneWindows64 # Build a Windows 64-bit standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
+          #- iOS # Build an iOS player.
           - Android # Build an Android .apk standalone app.
           - WebGL # WebGL.
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,8 +52,16 @@ jobs:
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-      - name: Release
-        uses: softprops/action-gh-release@v2
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+      - name: Upload artifact
+        if: matrix.targetPlatform == 'WebGL'
+        uses: actions/upload-pages-artifact@v1
         with:
-          files: build/${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+      - name: Deploy to GitHub Pages
+        if: matrix.targetPlatform == 'WebGL'
+        id: deployment
+        uses: actions/deploy-pages@v4
       
