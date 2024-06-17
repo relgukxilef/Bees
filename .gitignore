@@ -17,8 +17,12 @@
 !*.prefab
 !*.anim
 !*.controller
+!*.mat
+!*.shader
+!*.cginc
 
 !*.png
 !*.psd
+!*.ttf
 
 Library
