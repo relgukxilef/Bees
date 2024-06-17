@@ -25,6 +25,6 @@ public class Hive : Beeable
 
     public override Vector3 GetPosition()
     {
-        return transform.position;
+        return transform.position + Vector3.down;
     }
 }
