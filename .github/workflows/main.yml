@@ -6,6 +6,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: "pages"
@@ -54,12 +55,12 @@ jobs:
           path: build/${{ matrix.targetPlatform }}
           
       - name: Setup Pages
-        uses: actions/configure-pages@v1
+        uses: actions/configure-pages@v5
       - name: Upload artifact
         if: matrix.targetPlatform == 'WebGL'
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: build/${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}/WebGL
       - name: Deploy to GitHub Pages
         if: matrix.targetPlatform == 'WebGL'
         id: deployment
