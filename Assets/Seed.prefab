@@ -97,3 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b79ddcb59910b343a1f2573801ce80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot: {fileID: 0}
+  plantable: {fileID: 2460338631889160828, guid: 0d518212e2df90e4caa88ba92ce329bc, type: 3}

@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-
+    public static Item selection;
+    public InventorySlot slot;
+    public Flower plantable;
 }
